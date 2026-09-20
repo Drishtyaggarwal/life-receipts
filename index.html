@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Life, In Receipts</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- PapaParse for CSV Parsing -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+  
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="min-h-screen bg-slate-950 text-slate-100 flex flex-col overflow-x-hidden">
+
+  <!-- SVG overlay connection lines -->
+  <svg id="svg-canvas" role="img" aria-label="Connection visualizer vector line canvas overlay" class="absolute inset-0 w-full h-full pointer-events-none z-10"></svg>
+
+  <!-- Navigation Header -->
+  <header role="banner" class="max-w-7xl mx-auto px-8 pt-8 w-full flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+    <div>
+      <h1 class="text-3xl font-bold text-white tracking-wide">Your Life, In Receipts</h1>
+      <p class="text-slate-400 text-sm mt-1">Discover hidden stories across your digital traces</p>
+    </div>
+    
+    <div role="search" aria-label="Receipt Filtering Tools" class="flex gap-3 items-center flex-wrap">
+      <!-- Category Filter Group -->
+      <div role="group" aria-label="Filter receipts by category" class="flex bg-slate-800 p-1 rounded-lg border border-slate-700 text-xs">
+        <button id="filter-all" type="button" aria-label="Show all receipts" class="category-btn active px-3 py-1.5 rounded-md font-medium text-white bg-slate-700">All</button>
+        <button id="filter-music" type="button" aria-label="Filter by Music category" class="category-btn px-3 py-1.5 rounded-md font-medium text-slate-400 hover:text-white">Music</button>
+        <button id="filter-purchase" type="button" aria-label="Filter by Household Purchases" class="category-btn px-3 py-1.5 rounded-md font-medium text-slate-400 hover:text-white">Purchases</button>
+        <button id="filter-upi" type="button" aria-label="Filter by UPI Transactions" class="category-btn px-3 py-1.5 rounded-md font-medium text-slate-400 hover:text-white">UPI</button>
+      </div>
+
+      <!-- Search Input -->
+      <label for="search-input" class="sr-only">Search memories or tags</label>
+      <input id="search-input" type="text" aria-label="Search memories or tags" placeholder="Search memories, tags..." class="bg-slate-800 text-sm px-4 py-2 rounded-lg border border-slate-700 text-white focus:outline-none focus:border-sky-500" />
+      
+      <!-- Late Night Mode Toggle -->
+      <button id="filter-night" type="button" aria-label="Toggle Late Night Mode Filter" class="bg-indigo-950 hover:bg-indigo-900 text-indigo-300 border border-indigo-700 text-xs px-3 py-2 rounded-lg transition flex items-center gap-2">
+        <i data-lucide="moon" aria-hidden="true" class="w-4 h-4"></i>
+        <span>Late Night Mode</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Analytics Summary Bar -->
+  <section aria-label="Real-time Receipt Analytics" class="max-w-7xl mx-auto px-8 pt-6 w-full grid grid-cols-2 sm:grid-cols-4 gap-4 z-20">
+    <div class="bg-slate-900/80 border border-slate-800 p-4 rounded-xl flex flex-col justify-between">
+      <span class="text-xs text-slate-400 font-medium">Total Traces</span>
+      <span id="stat-total" class="text-2xl font-bold text-white mt-1">0</span>
+    </div>
+    <div class="bg-slate-900/80 border border-slate-800 p-4 rounded-xl flex flex-col justify-between">
+      <span class="text-xs text-slate-400 font-medium">Late Night Logs</span>
+      <span id="stat-night" class="text-2xl font-bold text-indigo-400 mt-1">0</span>
+    </div>
+    <div class="bg-slate-900/80 border border-slate-800 p-4 rounded-xl flex flex-col justify-between">
+      <span class="text-xs text-slate-400 font-medium">Total Spent</span>
+      <span id="stat-spent" class="text-2xl font-bold text-emerald-400 mt-1">₹0</span>
+    </div>
+    <div class="bg-slate-900/80 border border-slate-800 p-4 rounded-xl flex flex-col justify-between">
+      <span class="text-xs text-slate-400 font-medium">Spotify Tracks</span>
+      <span id="stat-music" class="text-2xl font-bold text-sky-400 mt-1">0</span>
+    </div>
+  </section>
+
+  <!-- Main Receipts Grid Canvas -->
+  <main role="main" aria-label="Digital Receipts Display Grid" class="flex-1 p-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 z-0" id="receipts-grid">
+    <div class="col-span-full text-center py-20 text-slate-400">
+      Loading digital receipts...
+    </div>
+  </main>
+
+  <!-- Detail Inspector Panel -->
+  <aside id="inspector-panel" aria-label="Receipt Details Inspector" class="fixed right-0 top-0 h-full w-80 bg-slate-900 border-l border-slate-800 p-6 z-30 transform translate-x-full transition-transform duration-300 shadow-2xl flex flex-col">
+    <button id="close-inspector" type="button" aria-label="Close details inspector" class="self-end text-slate-400 hover:text-white mb-4">✕ Close</button>
+    <div id="inspector-content" class="flex-1 overflow-y-auto"></div>
+  </aside>
+
+  <!-- Footer -->
+  <footer role="contentinfo" class="text-center py-4 text-xs text-slate-500">
+    <p>Your Life, In Receipts &copy; 2026. Built for High-Performance Digital Footprint Analytics.</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="visualizer.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

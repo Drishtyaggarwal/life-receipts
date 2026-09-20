@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;600;700&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Thermal Paper Effect */
+.thermal-receipt {
+  font-family: 'Space Mono', monospace;
+  background-color: #fefcf6;
+  color: #1e293b;
+  position: relative;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+  border-bottom: 10px solid transparent;
+  border-image: repeating-linear-gradient(
+    -45deg,
+    #fefcf6,
+    #fefcf6 5px,
+    transparent 5px,
+    transparent 10px
+  ) 10;
+}
+
+.receipt-card {
+  transition: all 0.2s ease-in-out;
+  border: 2px solid transparent;
+}
+
+.receipt-card:hover {
+  transform: translateY(-4px);
+  border-color: #38bdf8;
+}
+
+.receipt-card.connected {
+  border-color: #f43f5e !important;
+  box-shadow: 0 0 15px rgba(244, 63, 94, 0.5);
+}
