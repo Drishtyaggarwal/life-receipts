@@ -13,3 +13,10 @@ An interactive digital storytelling engine that correlates heterogeneous persona
 2. **Context-Aware Visualizer:** Hover over any card to uncover spatial/time-based connections using dynamic vector connections.
 3. **Filtering & Modes:** Late Night Mode (00:00 - 05:00 hrs filter), Multi-category isolation, and Instant Search.
 4. **Analytics Bar:** Live summary metrics for financial and behavioral data traces.
+
+
+## 🏆 Hackathon Achievement
+
+Secured **Rank #181** in **WEB RUSH 2026** (6-Hour Frontend Hackathon by Frontend Arena).
+
+![Web Rush 2026 Certificate](certificate.jpeg)
