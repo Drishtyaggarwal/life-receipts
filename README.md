@@ -19,4 +19,5 @@ An interactive digital storytelling engine that correlates heterogeneous persona
 
 Secured **Rank #181** in **WEB RUSH 2026** (6-Hour Frontend Hackathon by Frontend Arena).
 
-![Web Rush 2026 Certificate](certificate.jpeg)
+![Web Rush 2026 Certificate](<img width="1600" height="1120" alt="certificate" src="https://github.com/user-attachments/assets/fd584ffa-a053-4dac-a3b6-a3dba111bca5" />)
+
